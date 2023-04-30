@@ -35,8 +35,6 @@ const buildWord = (
     const replaceActionCost = getActionCost(curI - 1, curJ - 1, matrix);
 
     if (replaceActionCost < stepsNumToPerform) {
-      console.log(curJ);
-
       curWordObject[curJ] = targetWord[curI];
 
       // Put cursor to new position in matrix
@@ -44,7 +42,6 @@ const buildWord = (
       curJ -= 1;
 
       stepsNumToPerform = replaceActionCost;
-      console.log("Replace operation");
     } else if (deleteActionCost < stepsNumToPerform) {
       curWordObject[curJ] = "";
 
@@ -52,7 +49,6 @@ const buildWord = (
       curJ -= 1;
 
       stepsNumToPerform = deleteActionCost;
-      console.log("Delete operation");
     } else if (insertActionCost < stepsNumToPerform) {
       curWordObject[curJ + 1] = targetWord[curI];
 
@@ -60,7 +56,6 @@ const buildWord = (
       curI -= 1;
 
       stepsNumToPerform = insertActionCost;
-      console.log("Insert operation");
     } else {
       // If no action with lower cost that current steps number is found move cursor to the top left in matrix
       // and repeat the flow
